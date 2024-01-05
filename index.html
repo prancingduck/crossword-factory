@@ -222,7 +222,7 @@
 
 <body>
     <input type="text" id="hiddenInput"
-        style="position: absolute; left: 0; top: -9999px; width: 1px; height: 1px; opacity: 0;">
+        style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0;">
     <div id="main-container" style="text-align: center;">
         <h1>Crossword Factory</h1>
         <div id="signature">
@@ -502,7 +502,6 @@
         var highlightedCells = [];
         var wordPositions = {};
         var currentPuzzleIndex = 0;
-        var isHiddenInputFocused = false;
 
         function areAllWordsCorrect() {
             return crosswordData.words.every(function (word, index) {
@@ -850,19 +849,14 @@
                     document.addEventListener('keypress', handleProgressKeyInput); // Ensure the listener is attached
                     startProgressKeyTimer(); // Start the timer
 
+
                     // Set focus to hidden input
-                    if (!isHiddenInputFocused) {
-                        document.getElementById('hiddenInput').focus();
-                        isHiddenInputFocused = true;
-                    }
+                    document.getElementById('hiddenInput').focus();
                 });
 
                 cell.addEventListener('touchend', function () {
                     // Set focus to hidden input for mobile compatibility
-                    if (!isHiddenInputFocused) {
-                        document.getElementById('hiddenInput').focus();
-                        isHiddenInputFocused = true;
-                    }
+                    document.getElementById('hiddenInput').focus();
                 });
             });
 
@@ -883,7 +877,6 @@
             clearTimeout(progressKeyTimer); // Clear the timer
             isProgressKeyActive = false;
             document.removeEventListener('keypress', handleProgressKeyInput); // Ensure the listener is detached
-            isHiddenInputFocused = false;
         }
 
         // Click event listener outside of the DOMContentLoaded
