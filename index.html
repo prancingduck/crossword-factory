@@ -856,7 +856,9 @@
 
                 cell.addEventListener('touchend', function () {
                     // Set focus to hidden input for mobile compatibility
-                    document.getElementById('hiddenInput').focus();
+                    var x = window.scrollX, y = window.scrollY; // Store current scroll position
+                    document.getElementById('hiddenInput').focus(); // Set focus to hidden input
+                    window.scrollTo(x, y); // Reset scroll position
                 });
             });
 
