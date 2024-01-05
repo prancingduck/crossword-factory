@@ -502,6 +502,7 @@
         var highlightedCells = [];
         var wordPositions = {};
         var currentPuzzleIndex = 0;
+        var isHiddenInputFocused = false;
 
         function areAllWordsCorrect() {
             return crosswordData.words.every(function (word, index) {
@@ -849,16 +850,19 @@
                     document.addEventListener('keypress', handleProgressKeyInput); // Ensure the listener is attached
                     startProgressKeyTimer(); // Start the timer
 
-
                     // Set focus to hidden input
-                    document.getElementById('hiddenInput').focus();
+                    if (!isHiddenInputFocused) {
+                        document.getElementById('hiddenInput').focus();
+                        isHiddenInputFocused = true;
+                    }
                 });
 
                 cell.addEventListener('touchend', function () {
                     // Set focus to hidden input for mobile compatibility
-                    var x = window.scrollX, y = window.scrollY; // Store current scroll position
-                    document.getElementById('hiddenInput').focus(); // Set focus to hidden input
-                    window.scrollTo(x, y); // Reset scroll position
+                    if (!isHiddenInputFocused) {
+                        document.getElementById('hiddenInput').focus();
+                        isHiddenInputFocused = true;
+                    }
                 });
             });
 
@@ -879,6 +883,7 @@
             clearTimeout(progressKeyTimer); // Clear the timer
             isProgressKeyActive = false;
             document.removeEventListener('keypress', handleProgressKeyInput); // Ensure the listener is detached
+            isHiddenInputFocused = false;
         }
 
         // Click event listener outside of the DOMContentLoaded
