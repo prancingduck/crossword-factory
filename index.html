@@ -221,6 +221,7 @@
 </head>
 
 <body>
+    <input type="text" id="hiddenInput" style="position: absolute; left: -9999px;">
     <div id="main-container" style="text-align: center;">
         <h1>Crossword Factory</h1>
         <div id="signature">
@@ -583,6 +584,9 @@
                     if (wordPositions[clickedNumber]) {
                         var wordInfo = wordPositions[clickedNumber];
                         highlightWord(grid, wordInfo.x, wordInfo.y, wordInfo.length, wordInfo.orientation);
+
+                        // Set focus to hidden input
+                        document.getElementById('hiddenInput').focus();
                     }
                 });
             });
