@@ -848,6 +848,15 @@
                     isProgressKeyActive = true; // Set the flag when a cell is clicked
                     document.addEventListener('keypress', handleProgressKeyInput); // Ensure the listener is attached
                     startProgressKeyTimer(); // Start the timer
+
+
+                    // Set focus to hidden input
+                    document.getElementById('hiddenInput').focus();
+                });
+
+                cell.addEventListener('touchend', function () {
+                    // Set focus to hidden input for mobile compatibility
+                    document.getElementById('hiddenInput').focus();
                 });
             });
 
