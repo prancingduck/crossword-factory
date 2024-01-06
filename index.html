@@ -53,13 +53,13 @@
 
             footer,
             #custom-footer {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
         }
 
         @media only screen and (max-width: 375px) {
             body {
-                font-size: 12px;
+                font-size: 14px;
             }
 
             #main-container h1 {
@@ -84,11 +84,22 @@
         #crossword-grid td {
             border: 1px solid #f77f00;
             width: 2rem;
-            /* Use rem */
+            /* Width of the cell */
             height: 2rem;
+            /* Height of the cell */
+            max-width: 2rem;
+            /* Max width to maintain square shape */
             text-align: center;
             vertical-align: middle;
             position: relative;
+        }
+
+        @media only screen and (max-width: 375px) {
+            #crossword-grid td {
+                width: 1.25rem;
+                height: 1.25rem;
+                max-width: 1.25rem;
+            }
         }
 
         .number-overlay {
@@ -98,6 +109,31 @@
             font-size: 0.75rem;
             /* Use rem */
             color: #eae2b7;
+        }
+
+        #progress-key-grid div {
+            display: inline-block;
+            border: 1px solid #f77f00;
+            width: 2rem;
+            /* Using rem for scalability */
+            height: 2rem;
+            /* Keeping width and height the same for square cells */
+            text-align: center;
+            vertical-align: middle;
+            line-height: 2rem;
+            /* Align text vertically */
+            font-size: 1rem;
+            /* Adjust font size as needed */
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 375px) {
+            #progress-key-grid div {
+                width: 1.5rem;
+                height: 1.5rem;
+                line-height: 1.5rem;
+                font-size: 0.9rem;
+            }
         }
 
         #hints,
