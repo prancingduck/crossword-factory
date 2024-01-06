@@ -77,8 +77,6 @@
             border-collapse: separate;
             /* Keep borders separate */
             margin: auto;
-            width: 100%;
-            /* Full width */
         }
 
         #crossword-grid td {
@@ -87,18 +85,22 @@
             /* Width of the cell */
             height: 2rem;
             /* Height of the cell */
-            max-width: 2rem;
-            /* Max width to maintain square shape */
             text-align: center;
             vertical-align: middle;
             position: relative;
+        }
+
+        @media only screen and (max-width: 768px) {
+            #crossword-grid td {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
         }
 
         @media only screen and (max-width: 375px) {
             #crossword-grid td {
                 width: 1.25rem;
                 height: 1.25rem;
-                max-width: 1.25rem;
             }
         }
 
